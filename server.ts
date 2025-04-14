@@ -4,6 +4,7 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
+import * as path from 'path';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -24,8 +25,15 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-  // All regular routes use the Angular engine
-  server.get('*', (req, res, next) => {
+  // Serve index.html for any route that doesn't match a static file
+  // This ensures routes like /login will work on page refresh
+  server.get('/*', (req, res, next) => {
+    // Check if request is for an API endpoint or a static file
+    if (req.originalUrl.includes('/api/') || path.extname(req.originalUrl)) {
+      next();
+      return;
+    }
+
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine

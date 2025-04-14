@@ -20,7 +20,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { VmListComponent } from './vm-list/vm-list.component';
 import { VmDetailsComponent } from './vm-details/vm-details.component';
 import { VmDialogComponent } from './vm-dialog/vm-dialog.component';
-import { SignalrDebugComponent } from '../../shared/components/signalr-debug/signalr-debug.component';
 
 const routes: Routes = [
   {
@@ -57,8 +56,7 @@ const routes: Routes = [
     MatCardModule,
     MatTooltipModule,
     MatSnackBarModule,
-    TranslateModule,
-    SignalrDebugComponent
+    TranslateModule
   ]
 })
 export class VirtualMachinesModule { } 

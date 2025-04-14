@@ -1,0 +1,120 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<form [formGroup]="vmForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ translateKey('virtualMachine.name') }}</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="vmForm.get('name')?.hasError('required')">
+          {{ translateKey('validation.required') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('name')?.hasError('maxlength')">
+          {{ translateKey('validation.maxLength') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.cores') }}</mat-label>
+        <input matInput type="number" formControlName="cores" required>
+        <mat-error *ngIf="vmForm.get('cores')?.hasError('required')">
+          {{ translateKey('validation.required') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('cores')?.hasError('min')">
+          {{ translateKey('validation.min') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('cores')?.hasError('max')">
+          {{ translateKey('validation.max') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.ram') }} (GB)</mat-label>
+        <input matInput type="number" formControlName="ram" required>
+        <mat-error *ngIf="vmForm.get('ram')?.hasError('required')">
+          {{ translateKey('validation.required') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('ram')?.hasError('min')">
+          {{ translateKey('validation.min') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('ram')?.hasError('max')">
+          {{ translateKey('validation.max') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.disk') }} (GB)</mat-label>
+        <input matInput type="number" formControlName="disk" required>
+        <mat-error *ngIf="vmForm.get('disk')?.hasError('required')">
+          {{ translateKey('validation.required') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('disk')?.hasError('min')">
+          {{ translateKey('validation.min') }}
+        </mat-error>
+        <mat-error *ngIf="vmForm.get('disk')?.hasError('max')">
+          {{ translateKey('validation.max') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.os') }}</mat-label>
+        <mat-select formControlName="operatingSystemId" required>
+          <mat-option *ngFor="let os of data.operatingSystems" [value]="os.id">
+            {{ os.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="vmForm.get('operatingSystemId')?.hasError('required')">
+          {{ translateKey('validation.required') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.status') }}</mat-label>
+        <mat-select formControlName="statusId" required>
+          <mat-option *ngFor="let status of data.statuses" [value]="status.id">
+            <span [ngStyle]="{'color': status.colorCode}">●</span> {{ status.displayName || translateKey('status.' + status.name.toLowerCase()) }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="vmForm.get('statusId')?.hasError('required')">
+          {{ translateKey('validation.required') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ translateKey('virtualMachine.description') }}</mat-label>
+        <textarea matInput formControlName="description" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.hostname') }}</mat-label>
+        <input matInput formControlName="hostname">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ translateKey('virtualMachine.ipAddress') }}</mat-label>
+        <input matInput formControlName="ipAddress">
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">
+      {{ translateKey('buttons.cancel') }}
+    </button>
+    <button 
+      mat-raised-button 
+      type="submit" 
+      color="primary" 
+      [disabled]="vmForm.invalid">
+      {{ isEdit ? translateKey('buttons.update') : translateKey('buttons.create') }}
+    </button>
+  </div>
+</form> 

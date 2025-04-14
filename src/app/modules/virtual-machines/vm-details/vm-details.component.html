@@ -1,0 +1,86 @@
+<div class="details-container">
+  <div class="header">
+    <button mat-icon-button (click)="goBack()" matTooltip="{{ translateKey('buttons.back') }}">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>{{ translateKey('virtualMachine.details') }}</h1>
+  </div>
+
+  <div class="loading-shade" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="error-container" *ngIf="error">
+    <mat-icon color="warn">error</mat-icon>
+    <p>{{ translateKey('messages.error') }}</p>
+    <button mat-raised-button color="primary" (click)="loadVirtualMachine()">
+      <mat-icon>refresh</mat-icon>
+      {{ translateKey('buttons.refresh') }}
+    </button>
+  </div>
+
+  <mat-card class="details-card" *ngIf="vm && !error">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>computer</mat-icon>
+      </div>
+      <mat-card-title>{{ vm.name }}</mat-card-title>
+      <mat-card-subtitle>
+        <span 
+          class="status-badge" 
+          [ngStyle]="{'background-color': (vm.status.colorCode || '#888') + '20', 'color': vm.status.colorCode || '#888'}">
+          {{ translateKey('status.' + (vm.status.name.toLowerCase() || 'unknown')) }}
+        </span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-label">{{ translateKey('virtualMachine.os') }}</div>
+          <div class="detail-value">{{ vm.operatingSystem.name || '-' }}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">{{ translateKey('virtualMachine.cores') }}</div>
+          <div class="detail-value">{{ vm.cores || '-' }}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">{{ translateKey('virtualMachine.ram') }}</div>
+          <div class="detail-value">{{ vm.ram ? (vm.ram + ' GB') : '-' }}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">{{ translateKey('virtualMachine.disk') }}</div>
+          <div class="detail-value">{{ vm.disk ? (vm.disk + ' GB') : '-' }}</div>
+        </div>
+        
+        <div class="detail-item" *ngIf="vm?.hostname">
+          <div class="detail-label">{{ translateKey('virtualMachine.hostname') }}</div>
+          <div class="detail-value">{{ vm.hostname }}</div>
+        </div>
+        
+        <div class="detail-item" *ngIf="vm?.ipAddress">
+          <div class="detail-label">{{ translateKey('virtualMachine.ipAddress') }}</div>
+          <div class="detail-value">{{ vm.ipAddress }}</div>
+        </div>
+        
+        <div class="detail-item full-width" *ngIf="vm?.description">
+          <div class="detail-label">{{ translateKey('virtualMachine.description') }}</div>
+          <div class="detail-value description">{{ vm.description }}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">{{ translateKey('virtualMachine.createdAt') }}</div>
+          <div class="detail-value">{{ vm.createdAt | date:'medium' }}</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">{{ translateKey('virtualMachine.updatedAt') }}</div>
+          <div class="detail-value">{{ vm.updatedAt | date:'medium' }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div> 

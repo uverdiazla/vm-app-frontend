@@ -1,0 +1,158 @@
+@use '@angular/material' as mat;
+
+.vm-list-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vm-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: mat.get-color-from-palette(mat.$blue-palette, 800);
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.filter-field {
+  width: 100%;
+  margin-bottom: 16px;
+  
+  .mat-icon {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  input {
+    padding-left: 8px;
+  }
+}
+
+.table-container {
+  position: relative;
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  
+  th {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  td {
+    padding: 12px 16px;
+  }
+  
+  .mat-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.mat-column-actions {
+  width: 150px;
+  text-align: right;
+}
+
+.no-data {
+  padding: 40px 0;
+}
+
+.no-data-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.6;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.status-running {
+  background-color: mat.get-color-from-palette(mat.$green-palette, 100);
+  color: mat.get-color-from-palette(mat.$green-palette, 800);
+}
+
+.status-stopped {
+  background-color: mat.get-color-from-palette(mat.$red-palette, 100);
+  color: mat.get-color-from-palette(mat.$red-palette, 800);
+}
+
+.status-suspended {
+  background-color: mat.get-color-from-palette(mat.$orange-palette, 100);
+  color: mat.get-color-from-palette(mat.$orange-palette, 800);
+}
+
+.status-failed {
+  background-color: mat.get-color-from-palette(mat.$red-palette, 100);
+  color: mat.get-color-from-palette(mat.$red-palette, 900);
+}
+
+.status-provisioning {
+  background-color: mat.get-color-from-palette(mat.$blue-palette, 100);
+  color: mat.get-color-from-palette(mat.$blue-palette, 800);
+}
+
+.status-maintenance {
+  background-color: mat.get-color-from-palette(mat.$purple-palette, 100);
+  color: mat.get-color-from-palette(mat.$purple-palette, 800);
+}
+
+/* Responsive table styles */
+@media screen and (max-width: 960px) {
+  .mat-column-disk,
+  .mat-column-os {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mat-column-cores,
+  .mat-column-ram {
+    display: none;
+  }
+} 

@@ -1,0 +1,123 @@
+{
+  "app": {
+    "title": "Gestión de Máquinas Virtuales",
+    "tagline": "Administra tus recursos virtuales de manera eficiente",
+    "footer": "© 2025 VM Management. Todos los derechos reservados."
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "invalidCredentials": "Credenciales inválidas",
+    "requiredField": "Este campo es obligatorio",
+    "invalidEmail": "Por favor, introduce un correo electrónico válido"
+  },
+  "nav": {
+    "dashboard": "Panel principal",
+    "virtualMachines": "Máquinas virtuales",
+    "createVM": "Crear máquina virtual",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "language": "Idioma",
+    "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido/a,",
+    "vmCount": "Total de máquinas virtuales",
+    "vmRunning": "En ejecución",
+    "vmStopped": "Detenidas",
+    "recentActivity": "Actividad reciente",
+    "quickActions": "Acciones rápidas"
+  },
+  "virtualMachine": {
+    "list": "Lista de máquinas virtuales",
+    "create": "Crear máquina virtual",
+    "edit": "Editar máquina virtual",
+    "details": "Detalles de la máquina virtual",
+    "name": "Nombre",
+    "cores": "Núcleos",
+    "ram": "RAM (GB)",
+    "disk": "Disco (GB)",
+    "os": "Sistema operativo",
+    "status": "Estado",
+    "createdAt": "Creada el",
+    "updatedAt": "Actualizada el",
+    "actions": "Acciones",
+    "noVirtualMachines": "No hay máquinas virtuales disponibles",
+    "deleteConfirmation": "¿Estás seguro de que deseas eliminar esta máquina virtual?",
+    "createSuccess": "Máquina virtual creada con éxito",
+    "updateSuccess": "Máquina virtual actualizada con éxito",
+    "deleteSuccess": "Máquina virtual eliminada con éxito",
+    "createError": "Error al crear la máquina virtual",
+    "updateError": "Error al actualizar la máquina virtual",
+    "deleteError": "Error al eliminar la máquina virtual",
+    "detailsError": "Error al cargar los detalles de la máquina virtual",
+    "description": "Descripción",
+    "hostname": "Nombre de host",
+    "ipAddress": "Dirección IP",
+    "paginator": "Paginador de máquinas virtuales"
+  },
+  "status": {
+    "running": "En ejecución",
+    "stopped": "Detenida",
+    "suspended": "Suspendida",
+    "failed": "Fallida",
+    "provisioning": "Aprovisionando",
+    "maintenance": "En mantenimiento",
+    "unknown": "Desconocido"
+  },
+  "paginator": {
+    "itemsPerPage": "Elementos por página:",
+    "nextPage": "Página siguiente",
+    "previousPage": "Página anterior",
+    "firstPage": "Primera página",
+    "lastPage": "Última página",
+    "range": "{{startIndex}} - {{endIndex}} de {{length}}",
+    "emptyRange": "0 de 0"
+  },
+  "buttons": {
+    "create": "Crear",
+    "edit": "Editar",
+    "update": "Actualizar",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "details": "Detalles",
+    "refresh": "Actualizar",
+    "close": "Cerrar"
+  },
+  "messages": {
+    "loading": "Cargando...",
+    "noData": "No hay datos disponibles",
+    "error": "Se ha producido un error",
+    "success": "Operación completada con éxito",
+    "welcome": "Bienvenido/a a la plataforma de gestión de máquinas virtuales",
+    "sessionExpired": "Tu sesión ha expirado. Por favor, inicia sesión de nuevo",
+    "filter": "Filtrar",
+    "filterPlaceholder": "Buscar máquina virtual..."
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "minLength": "Este campo debe tener al menos {min} caracteres",
+    "maxLength": "Este campo no puede tener más de {max} caracteres",
+    "min": "El valor mínimo permitido es {min}",
+    "max": "El valor máximo permitido es {max}",
+    "email": "Introduce un correo electrónico válido",
+    "pattern": "El formato no es válido"
+  },
+  "VM_LIST": {
+    "ERROR_LOADING": "Error al cargar las máquinas virtuales",
+    "DELETE_CONFIRM_MESSAGE": "¿Estás seguro de eliminar la máquina virtual {name}?",
+    "DELETE_SUCCESS": "Máquina virtual eliminada con éxito",
+    "DELETE_ERROR": "Error al eliminar la máquina virtual"
+  },
+  "COMMON": {
+    "CLOSE": "Cerrar",
+    "FEATURE_COMING_SOON": "Esta funcionalidad estará disponible próximamente"
+  }
+} 

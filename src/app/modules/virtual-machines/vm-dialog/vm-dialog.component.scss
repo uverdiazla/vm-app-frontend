@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  flex: 1 1 200px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+} 

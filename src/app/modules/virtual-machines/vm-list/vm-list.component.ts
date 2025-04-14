@@ -57,6 +57,19 @@ export class VmListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadVirtualMachines();
     this.configurePaginatorTranslation();
+    
+    // Subscribe to real-time VM updates
+    this.vmService.vmList$.subscribe(vms => {
+      if (vms && vms.length > 0) {
+        console.log(`Real-time update received: ${vms.length} VMs`);
+        this.dataSource.data = vms;
+        
+        // Reset pagination to first page when data is updated via real-time
+        if (this.dataSource.paginator) {
+          this.dataSource.paginator.firstPage();
+        }
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -78,14 +91,9 @@ export class VmListComponent implements OnInit, OnDestroy {
   loadVirtualMachines(): void {
     this.isLoading = true;
     this.vmService.getAll().subscribe({
-      next: (vms: VirtualMachine[]) => {
-        this.dataSource.data = vms;
+      next: () => {
+        // Data is now handled through the vmList$ observable
         this.isLoading = false;
-        
-        // Reset pagination to first page when data is updated
-        if (this.dataSource.paginator) {
-          this.dataSource.paginator.firstPage();
-        }
       },
       error: (error: any) => {
         console.error('Error loading virtual machines', error);

@@ -47,6 +47,14 @@ export class AuthService {
     return this.currentUserValue?.role === 'Admin';
   }
 
+  /**
+   * Gets the current JWT token
+   * @returns The current JWT token or empty string if not available
+   */
+  getToken(): string {
+    return this.tokenValue || '';
+  }
+
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, loginRequest)
       .pipe(

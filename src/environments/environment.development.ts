@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://192.168.0.100:5088'
+  apiUrl: 'vm-api-backend-appservice-cvgmb8evdwh3cha5.canadacentral-01.azurewebsites.net'
 }; 
